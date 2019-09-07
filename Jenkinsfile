@@ -1,11 +1,12 @@
 pipeline {
     agent any
+    tools {
+        maven 'M3'
+    }
     stages{
         stage('Build'){
             steps {
-                withEnv( ['MAVEN_HOME=D:/bin/apache-maven-3.6.1/bin'] ) {
-                    bat 'mvn clean package'
-                }
+                bat 'mvn clean package'
             }
             post {
                 success {
