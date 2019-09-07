@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                withEnv( ['MAVEN_HOME=D:\bin\apache-maven-3.6.1'] ) {
+                withEnv( ['MAVEN_HOME=D:/bin/apache-maven-3.6.1'] ) {
                     bat 'mvn clean package'
                 }
             }
