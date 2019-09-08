@@ -4,7 +4,7 @@ pipeline {
         maven 'local maven'
     }
     stages{
-        stage('Build'){
+        stage('Build') {
             steps {
                 bat 'mvn clean package'
             }
@@ -13,6 +13,11 @@ pipeline {
                     echo '開始存檔...'
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                build job: 'deploy-to-staging'
             }
         }
     }
